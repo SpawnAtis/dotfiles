@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# Amazon Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 export TERM=xterm-256color
 export CLICOLOR=1
 export LSCOLORS=Fafacxdxbxegedabagacad
@@ -73,11 +74,11 @@ PATH="/usr/local/bin:$PATH";
 PATH="$PATH:./node_modules/.bin:../node_modules/.bin:../../node_modules/.bin:../../../node_modules/.bin:../../../../node_modules/.bin:../../../../../node_modules/.bin:../../../../../../node_modules/.bin:../../../../../../../node_modules/.bin"
 
 ## Deno
-PATH="/Users/kentcdodds/.deno/bin:$PATH"
+PATH="/Users/spawnatis/.deno/bin:$PATH"
 
 ## Yarn
-PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-alias yarn="echo update the PATH in ~/.zshrc"
+# PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# alias yarn="echo update the PATH in ~/.zshrc"
 
 # Custom bins
 PATH="$PATH:$HOME/.bin:$HOME/.local/bin";
@@ -87,7 +88,7 @@ PATH="$PATH:$HOME/.my_bin";
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *"$N_PREFIX/bin"* ]] || PATH="$N_PREFIX/bin:$PATH"  # Added by n-install (see http://git.io/n-install-repo).
 
 # script kit
-PATH="$PATH:$HOME/.kenv/bin:$HOME/.kit/bin";
+#PATH="$PATH:$HOME/.kenv/bin:$HOME/.kit/bin";
 
 # fly manual install
 PATH="$HOME/.fly/bin:$PATH";
@@ -113,7 +114,7 @@ alias d="cd ~/code";
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias deleteDSFiles="find . -name '.DS_Store' -type f -delete"
-alias kcd-oss="npx -p yo -p generator-kcd-oss -c 'yo kcd-oss'";
+# alias kcd-oss="npx -p yo -p generator-kcd-oss -c 'yo kcd-oss'";
 function rmx {
   cp -R ~/.rmx "$@";
   cd "$@";
@@ -185,11 +186,15 @@ gif() {
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-source ~/.zshrc.private
+#source ~/.zshrc.private
 
 # bun completions
-[ -s "/Users/kentcdodds/.bun/_bun" ] && source "/Users/kentcdodds/.bun/_bun"
+[ -s "/Users/spawnatis/.bun/_bun" ] && source "/Users/spawnatis/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+alias python=/usr/bin/python3
+
+# Amazon Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
